@@ -6,9 +6,6 @@ with all these quantities visualized. The color scale for the skid patches
 refers to how bad the situation is, while for the gear and gain ratios just
 to how hard they are.
 
-It also gives an approximation of the chain length. It is given assuming 
-the distance between the center of the cog and of the chain ring = 408
-mm. This parameter can be modified.
  
 ## Basic usage: 
 
@@ -21,12 +18,21 @@ mm. This parameter can be modified.
 ## Advanced usage: 
 
 ```matlab
- [var,data] = fixedGearCalc(N,n,tire,crank,imperial)
+ [var,data] = fixedGearCalc(N,n,tire,crank,imperial,cogtobb)
  ```
-    tire = tire size in mm. Default is 28 mm.
-    crank = crank length in mm. Default is 170 mm.
-    imperial = switch case for km/h (0), m/s (1) and mi/h (2). Default is 0.
+    tire     = tire size in mm. Default 28 mm.
+    crank    = crank length in mm. Default 170 mm.
+    imperial = switch case for km/h (0), m/s (1) and mi/h (2). Default  0.
+    cogtobb  = distance between the center of the rear cog and the bottom
+               bracket in mm. Default 408 mm.
     
     
 Any of these last three additional parameters can be given, it is not 
 necessary to list all of them.
+
+### Chain length
+
+It also gives an approximation of the chain length, if the distance between the
+centers of the rear cog and of the bottom bracket, *cogtobb* is provided. The chain length
+is evaluated considering an integer number of 1/4" links, it could be useful to
+check if modifying *cogtobb* and *n* requires adding new links.
