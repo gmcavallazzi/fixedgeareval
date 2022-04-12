@@ -1,9 +1,30 @@
+% Plot data settings
+plt.rpmLow      = 30; % min numer of RPM displayed
+plt.rpmHigh     = 130; % max numer of RPM displayed
+plt.rpmStep     = 10;
+temp.rpm        = 30:10:130;
+plt.rpmArray    = plt.rpmLow:plt.rpmStep:plt.rpmHigh;
+plt.speedArray  = data.unitSpeed*var.development*temp.rpm/60;
+
+plt.sz          = 50; % marker size for RPM vs Speed plot
+
+plt.theta       = 0:0.00005:2*pi;
+plt.thcog       = pi/2+data.alpha:0.01:3*pi/2-data.alpha;
+plt.thchain     = -pi/2-data.alpha:0.01:pi/2+data.alpha;
+
+% Define some colors
+plt.gold    = [212,175,55]/255;
+plt.grey    = [220,220,220]/255;
+plt.silver  = [192,192,192]/255;
+plt.orange  = [255,140,0]/255;
+plt.green   = [50,205,50]/255;
+
+
 %% RPM VS SPEED PLOT
 plt.fig = figure();
 set(groot,'defaultAxesTickLabelInterpreter','latex');
 
-plt.graph = scatter(plt.rpmArray,plt.speedArray,plt.sz,plt.rpmArray,'filled')%,...
-    %'MarkerEdgeColor',[0 .5 .5], 'MarkerFaceColor',plt.orange);
+plt.graph = scatter(plt.rpmArray,plt.speedArray,plt.sz,plt.rpmArray,'filled');
 
 xlabel('RPM', 'interpreter','latex')
 ylabel(strcat('Speed ',data.speedNames(round(imperial+1))), 'interpreter','latex')

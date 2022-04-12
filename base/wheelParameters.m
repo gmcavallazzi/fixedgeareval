@@ -2,7 +2,7 @@ data.tireRadiusList = [332 335 336 342 345 347 354 365 370];
                 % values from Sheldon Brown blog
 data.tireSizeList   = [20 25 28 32 35 38 44 50 56]; 
                 % values from Sheldon Brown blog
-data.tireRadius     = interp1(data.tireSizeList,data.tireRadiusList,tire); 
+data.tireRadius     = interp1(data.tireSizeList,data.tireRadiusList,data.tire); 
                 % to fit other tire sizes
                 
 data.rim         = 622/2; % standard of 700c. Soon to be adapted with other diameters

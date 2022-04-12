@@ -71,6 +71,7 @@ data.speedNames = string(data.speedNames);
 data.chainRing      = round(N);
 data.rearCog        = round(n);
 data.crankLength    = round(crank,2);
+data.tire           = round(tire,1);
 
 wheelParameters; % import wheel data
 
@@ -84,7 +85,7 @@ var.gainRatio   = var.ratio*data.tireRadius/data.crankLength; % Adimensional gai
 temp.factChainRing = factor(data.chainRing);
 temp.factRearCog = factor(data.rearCog);
 for i = 1:length(temp.factRearCog)
-    for j = 1:length(temp.factChainRing);
+    for j = 1:length(temp.factChainRing)
         if temp.factChainRing(j) == temp.factRearCog(i)
             temp.factChainRing(j)   = 1;
             temp.factRearCog(i)     = 1;
@@ -94,25 +95,6 @@ for i = 1:length(temp.factRearCog)
 end
 var.skidPatches = prod(temp.factRearCog); % number of skid patches on the wheel
 
-% Plot data settings
-plt.rpmLow      = 30; % min numer of RPM displayed
-plt.rpmHigh     = 130; % max numer of RPM displayed
-plt.rpmStep     = 10;
-plt.rpmArray    = [plt.rpmLow:plt.rpmStep:plt.rpmHigh];
-plt.speedArray = data.unitSpeed*var.development*[30:10:130]/60;
-
-plt.sz      = 50; % marker size for RPM vs Speed plot
-
-plt.theta       = 0:0.00005:2*pi;
-plt.thcog       = pi/2+data.alpha:0.01:3*pi/2-data.alpha;
-plt.thchain     = -pi/2-data.alpha:0.01:pi/2+data.alpha;
-
-
-% Define some colors
-plt.gold    = [212,175,55]/255;
-plt.grey    = [220,220,220]/255;
-plt.silver  = [192,192,192]/255;
-plt.orange  = [255,140,0]/255;
-plt.green   = [50,205,50]/255;
-
 plotFigures;
+
+%
