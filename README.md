@@ -6,6 +6,9 @@ with all these quantities visualized. The color scale for the skid patches
 refers to how bad the situation is, while for the gear and gain ratios just
 to how hard they are.
 
+As for now it works with 700c (28") wheels only, but it will be adapted soon
+to work with other settings.
+
  
 ## Basic usage: 
 
